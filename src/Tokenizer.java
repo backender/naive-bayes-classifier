@@ -65,6 +65,11 @@ public class Tokenizer {
             "yourself", "yourselves"
     };
 
+    /**
+     * Remove stop words from a given String array
+     * @param input
+     * @return ArrayList
+     */
     public ArrayList<String> clear(String[] input){
         ArrayList<String> output = new ArrayList<String>();
         for(String word : input){
@@ -82,6 +87,11 @@ public class Tokenizer {
         return output;
     }
 
+    /**
+     * Remove unnecessary characters from a given string
+     * @param input
+     * @return
+     */
     public String clearUglyChars(String input){
         String output = input;
         for(Character c : uglyChars){

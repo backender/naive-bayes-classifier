@@ -22,6 +22,13 @@ public class Classifier {
         return this.trainMessages;
     }
 
+    /**
+     * Get probability for a message and category
+     *
+     * @param message
+     * @param category
+     * @return
+     */
     public double calculateProbability(ArrayList<String> message, String category){
         double probMessageIsCat = getOptimizedProbabilityOfCategory(category);
 
@@ -38,6 +45,13 @@ public class Classifier {
     }
 
 
+    /**
+     * Load given test messages
+     * (Also remove stop words and unneccessary characters)
+     * @param input
+     * @return
+     * @throws IOException
+     */
     public ArrayList<ArrayList<String>> loadTestMessages(BufferedReader input) throws IOException {
         String line;
         Tokenizer t = new Tokenizer();
@@ -54,6 +68,12 @@ public class Classifier {
     }
 
 
+    /**
+     * Load given training messages
+     * (Also remove stop words and unnecessary characters)
+     * @param input
+     * @throws IOException
+     */
     public void loadTrainMessages(BufferedReader input) throws IOException {
         String line;
         Tokenizer t = new Tokenizer();
@@ -73,7 +93,10 @@ public class Classifier {
         }
     }
 
-    public void fillCategories(){
+    /**
+     * Attach each word from training messages to a category and count the words occurrence
+     */
+    public void train(){
         for(MessageNode n : getTrainMessages()){
             for(String word : n.text){
 

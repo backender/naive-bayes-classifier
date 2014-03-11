@@ -12,14 +12,15 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            BufferedReader trainInput = new BufferedReader(new FileReader(TrainFile));
-            BufferedReader testInput = new BufferedReader(new FileReader(TestFile));
+            BufferedReader trainInput = new BufferedReader(new FileReader(args[0]));
+            BufferedReader testInput = new BufferedReader(new FileReader(args[1]));
 
             Classifier c = new Classifier();
             try {
                 c.loadTrainMessages(trainInput);
-                c.fillCategories();
+                c.train();
 
+                /* Uncomment for more info
                 System.out.println("Number of Messages: " + c.numberOfMessages());
                 System.out.println("Number of Messages in ham: " + c.numberOfMessagesPerCategory("ham"));
                 System.out.println("Number of Words in ham: " + c.wordsPerCategory("ham"));
@@ -29,7 +30,7 @@ public class Main {
                 System.out.println("Number of Words in spam: " + c.wordsPerCategory("spam"));
                 System.out.println("Probability of spam: " + c.getProbabilityOfCategory("spam"));
                 System.out.println("Optmized (log) Probability of spam: " + c.getOptimizedProbabilityOfCategory("spam"));
-
+                */
 
                 //Test
                 FileWriter write = new FileWriter(predictionFile, false);
@@ -45,7 +46,7 @@ public class Main {
                         System.out.println("spam");
                         predictionPrinter.printf("%s" + "%n", "spam");
                     } else {
-                        System.out.println("ham");
+                        System.out.println("hame");
                         predictionPrinter.printf("%s" + "%n", "ham");
                     }
                 }
